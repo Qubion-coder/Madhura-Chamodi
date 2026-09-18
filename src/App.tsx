@@ -205,7 +205,7 @@ function CountdownTimer() {
   );
 }
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwM3r0YQsD1bv065C3imknuKVvQCWtQLy3CTycQCRlZ8UhUUA2npwvbPVL91OV3E2zp/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBD-n9k6W1Tt-B2WX8_-pJ32z_WtGU_wLV2g4XyZx9GcQLp7ojem74YTQhljTZPQy02w/exec";
 
 export default function WeddingInvitation() {
   const [isOpened, setIsOpened] = useState(false);
@@ -219,7 +219,7 @@ export default function WeddingInvitation() {
   const hasGuest = guestPrefix && guestName;
 
   // Form State
-  const [rsvpData, setRsvpData] = useState({ name: guestName || "", guests: "1", dietary: "" });
+  const [rsvpData, setRsvpData] = useState({ name: guestName || "", guests: "1" });
   const [wishData, setWishData] = useState({ name: guestName || "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<null | "rsvp_success" | "wish_success" | "error">(null);
@@ -241,7 +241,6 @@ export default function WeddingInvitation() {
       const fieldMapping: Record<string, string> = {
         name: "Name",
         guests: "Guests",
-        dietary: "Dietary Notes",
         message: "Message"
       };
 
@@ -262,7 +261,7 @@ export default function WeddingInvitation() {
       setSubmitStatus(`${formName}_success` as any);
 
       // Reset forms
-      if (formName === "rsvp") setRsvpData({ name: guestName || "", guests: "1", dietary: "" });
+      if (formName === "rsvp") setRsvpData({ name: guestName || "", guests: "1" });
       else setWishData({ name: guestName || "", message: "" });
 
     } catch (error) {
@@ -870,7 +869,7 @@ export default function WeddingInvitation() {
                     <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-theme-300" />
                   </div>
                   <p className="text-stone-300 text-[15px] md:text-base max-w-md mx-auto leading-relaxed mb-16 tracking-wide font-light">
-                    We would be absolutely thrilled to celebrate with you. Kindly RSVP before 1st October.
+                    We would be absolutely thrilled to celebrate with you. Kindly RSVP before 15th October.
                   </p>
 
                   {/* Premium RSVP Form */}
@@ -906,17 +905,6 @@ export default function WeddingInvitation() {
                             <div className="w-2 h-2 border-r border-b border-theme-300 rotate-45 transform -translate-y-[25%]" />
                           </div>
                         </div>
-                      </div>
-
-                      <div className="space-y-3">
-                        <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Dietary Notes</label>
-                        <input
-                          type="text"
-                          value={rsvpData.dietary}
-                          onChange={(e) => setRsvpData({ ...rsvpData, dietary: e.target.value })}
-                          placeholder="Allergies, Vegan, etc."
-                          className="w-full bg-transparent border-b border-white/20 px-2 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-theme-300 transition-colors font-cinzel text-[19px] md:text-xl tracking-wide"
-                        />
                       </div>
 
                       <div className="pt-10">
